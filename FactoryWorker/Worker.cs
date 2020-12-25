@@ -22,10 +22,10 @@ namespace FactoryWorker
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            await Task.Delay(3000);
             for (int i = 1; i < 11; i++)
             {
                 var client = _factory.CreateClient();
-                
                 await client.GetAsync("https://codehaks.com");
 
                 //using var client = new HttpClient();
@@ -37,11 +37,7 @@ namespace FactoryWorker
 
             _logger.LogInformation("Done!");
 
-            //while (!stoppingToken.IsCancellationRequested)
-            //{
-            //    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            //    await Task.Delay(1000, stoppingToken);
-            //}
+           
         }
     }
 }
