@@ -37,7 +37,7 @@ namespace PortMonitorApp
                 connections = ipGlobalProperties
                     .GetActiveTcpConnections()
                     .Where(c => c.RemoteEndPoint.Port == 443)
-                    .Where(c => c.RemoteEndPoint.Address.ToString() == "185.116.160.100")
+                    .Where(c => c.RemoteEndPoint.Address.ToString().ToLower().Contains("auxalia"))
                     .ToArray();
                 foreach (var item in connections)
                 {
