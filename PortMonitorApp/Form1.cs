@@ -34,10 +34,14 @@ namespace PortMonitorApp
             {
                 label3.Text = index.ToString();
 
+                var cons = ipGlobalProperties
+                    .GetActiveTcpConnections();
+
                 connections = ipGlobalProperties
                     .GetActiveTcpConnections()
-                    .Where(c => c.RemoteEndPoint.Port == 443)
-                    .Where(c => c.RemoteEndPoint.Address.ToString().ToLower().Contains("auxalia"))
+                //    .Where(c => c.RemoteEndPoint.Port == 443)
+               //     .Where(c=>c.State==TcpState.TimeWait)
+                    .Where(c => c.RemoteEndPoint.Address.ToString()== "193.26.158.60")
                     .ToArray();
                 foreach (var item in connections)
                 {
