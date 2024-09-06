@@ -28,20 +28,11 @@ namespace FactoryWorker
                 
                 await client.GetAsync("https://codehaks.com");
 
-                //using var client = new HttpClient();
-                //await client.GetAsync("https://codehaks.com");
-
                 _logger.LogInformation($"{i} - Connection established");
 
             }
 
             _logger.LogInformation("Done!");
-
-            //while (!stoppingToken.IsCancellationRequested)
-            //{
-            //    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            //    await Task.Delay(1000, stoppingToken);
-            //}
         }
     }
 }
