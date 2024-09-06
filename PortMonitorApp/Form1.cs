@@ -41,7 +41,7 @@ namespace PortMonitorApp
                     .GetActiveTcpConnections()
                 //    .Where(c => c.RemoteEndPoint.Port == 443)
                //     .Where(c=>c.State==TcpState.TimeWait)
-                    .Where(c => c.RemoteEndPoint.Address.ToString()== "193.26.158.60")
+                    .Where(c => c.RemoteEndPoint.Address.ToString()== textBox1.Text)
                     .ToArray();
                 foreach (var item in connections)
                 {
