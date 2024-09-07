@@ -21,6 +21,7 @@ namespace PortMonitorApp
 
         public bool Continue { get; set; }
 
+        public List<int> UsedPorts { get; set; }=new List<int>();
         private async void button1_Click(object sender, EventArgs e)
         {
             
@@ -46,11 +47,13 @@ namespace PortMonitorApp
                 foreach (var item in connections)
                 {
                     listBox1.Items.Add($"Local Port : {item.LocalEndPoint.Port} ->  {item.RemoteEndPoint.Address.ToString()} | state : {item.State}");
+                    if (!UsedPorts.Contains(item.LocalEndPoint.Port)) { UsedPorts.Add(item.LocalEndPoint.Port); }
                 }
-                var count = connections.Where(c => c.State == TcpState.TimeWait).Count();
+                var count = connections.Where(c => c.State == TcpState.Established).Count();
                 label2.Text = count.ToString();
                 await Task.Delay(1000);
-                listBox1.Items.Clear();
+                label6.Text=UsedPorts.Count.ToString();
+                //listBox1.Items.Clear();
                 index++;
 
 
