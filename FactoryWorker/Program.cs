@@ -19,7 +19,7 @@ namespace FactoryWorker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
-                    services.AddHttpClient();//.Set(TimeSpan.FromMinutes(10));
+                    services.AddHttpClient();
                 });
     }
 }
